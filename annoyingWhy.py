@@ -1,0 +1,10 @@
+print("Why do we have to do this?")
+input()
+print("why?")
+input()
+print("why?")
+input()
+print("why?")
+input()
+print("okay.")
+
