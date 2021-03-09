@@ -1,0 +1,5 @@
+p = makeEmptyPicture (1000,1000,green)
+addOval(p,150,150,300,300,blue)
+addRect(p, 260,300,260,300,blue)
+addText(p,260,300, "This is a test")
+show(p)
