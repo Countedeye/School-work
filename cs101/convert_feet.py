@@ -30,6 +30,7 @@ elif user_input2 == "yards":
 elif user_input2 == "miles":
     print(str(miles) + " mi")
 
+#catches any user errors.
 else:
     print("Invalid unit selection \"" + user_input2 + "\".")
     exit()    
