@@ -6,8 +6,7 @@ def headOfFile(myFile):
 
 def tailOfFile(myFile):
    lineNum = 0
-   lines = myFile.readlines()
-   for line in reversed(lines):
+   for line in reversed(myFile.readlines()):
         if lineNum < 5:
             print(line)
         lineNum += 1    
@@ -42,11 +41,16 @@ def stats(myFile):
 
 
 # user will need to import files from their own computer. This is my imported domain. to write the code and check.
-#myFile = open("/Users/william.sutton/Desktop/School work /School-work/cs151/number.txt", "rt")
-myFile = open("textFile.txt", "rt")
+myFile = open("number.txt", "rt")
+#myFile = open("textFile.txt", "r")
 
 #Calling each function.
 headOfFile(myFile)
 tailOfFile(myFile)
+myFile.close()
+#I needed to close the file and reopen to get the word count to count correctly.
+myFile = open("number.txt", "rt")
 wc(myFile)
-stats(myFile)
+
+file2= open("number.txt","r")
+stats(file2)
