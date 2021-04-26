@@ -1,6 +1,5 @@
 
 def headOfFile(myFile):
-    lineNum = 0
     for x in range(5):
         print(myFile.readline())
 
