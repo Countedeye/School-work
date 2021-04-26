@@ -1,0 +1,18 @@
+This is a sample text file.
+It is not a really fun file but it is just a text file that you
+can use to practice reading and writing.  There are some
+
+blank lines as well as some
+   lines that start with a space
+
+and some lines
+with
+only
+ 5
+
+1
+2
+numbers on them.
+
+You can use this to test what the first and last lines of code are
+as well as other things such as the number of lines:18  and the number of words:86
