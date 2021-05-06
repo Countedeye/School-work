@@ -43,8 +43,61 @@ def userMove(board,player):
         print(f"Error: Invalid move. '{move}' .")
 
 
+def checkForWinner(board,player):
+    
+    # check rows
+    if board[0][0] == player and board[0][1] == player and board[0][2] == player:
+        return player
+    if board[1][0] == player and board[1][1] == player and board[1][2] == player:
+        return player
+    if board[2][0] == player and board[2][1] == player and board[2][2] == player:
+        return player
+
+    #check columns
+    if board[0][0] == player and board[1][0] == player and board[2][0] == player:
+        return player
+    if board[0][1] == player and board[1][1] == player and board[2][1] == player:
+        return player
+    if board[0][2] == player and board[1][2] == player and board[2][2] == player:
+        return player
+
+    #check diagonals
+    if board[0][0] == player and board[1][1] == player and board[2][2] == player:
+        return player
+    if board[0][2] == player and board[1][1] == player and board[2][0] == player:
+        return player
+    
+
+    # checking tie
+    if board[0][0] != " " and board[0][1] != " " and board[0][2] == " " and board[0][1] != " " and board[1][1] != " " and board[2][1] != " " and board[2][0] != " " and board[2][1] != " " and board[2][2] == " ":
+        return "cat"
+
+
+
 # Main Programming
 board = createBoard()
-player = "X"
 printBoard(board)
-userMove(board,player)
+player = "x"
+winner = None
+
+# Game Loop
+
+while winner == None:
+    
+    # player move
+    userMove(board,player)
+    
+    # print board
+    printBoard(board)
+
+
+    #check for winner
+    winner = checkForWinner(board,player)
+
+    #Switch player (toggle pattern)
+    if player == "x":
+        player = "o"
+    else:
+        player = "x"    
+
+print(f'Player "{winner}" has won the game!')       
