@@ -100,4 +100,8 @@ while winner == None:
     else:
         player = "x"    
 
-print(f'Player "{winner}" has won the game!')       
+
+if winner == "cat":
+    print("Tie game.")
+else:
+    print(f'Player "{winner}" has won the game!')       
