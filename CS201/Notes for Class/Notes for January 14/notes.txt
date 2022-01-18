@@ -1,0 +1,39 @@
+Notes for CS 201
+
+-Arguments are anything extra data supplied to the command line distinguished by a space. “” allows space to be in single argument. 
+-l is a flag that stands for long list mode.
+
+
+# Absolute Path
+- is identified with slash.
+
+
+- Tricky exception:
+~		-The Shell replaces the tilde with the home dir BEFORE the command is run. 
+$HOME		-ditto
+~username  	-ditto but for a particular user.
+
+
+# Relative Paths
+-relative path does not have slash. Which means its relative to the current working directory.
+
+-They are RELATIVE to the terminal's current working directory (in most cases).
+
+
+# Environment Variables
+
+-Used by specifying a '$' character followed by the name
+
+-Can be listed with the 'env' command.
+
+# Make Directories
+
+mkdir foo    # Makes a directory called "foo" in CWD
+mkdir a/b/c  # Error, parent directories a and b don't exist.
+
+
+# Keyboard Shortcuts
+
+Autocomplete with 'Tab'
+Previous Commands 'Up/Down'
+
