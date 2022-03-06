@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Radio Buttons</title>
+        <style>
+
+body {
+    background-color: #999;
+}
+
+/* id selector */
+#results {
+    color: #cc2255;
+}
+
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Radio Buttons</h1>
+
+        <p>
+            What is your favorite fruit?
+        <p>
+
+        <label>
+            <input class="fruit-radio" type="radio" value="apples" name="fruits" onchange="postResults();"/> Apples
+        </label>
+        <br/>
+        <label>
+            <input class="fruit-radio" type="radio" value="bananas" name="fruits" onchange="postResults();"/> Bananas
+        </label>
+        <br/>
+        <label>
+            <input class="fruit-radio" type="radio" value="oranges" name="fruits" onchange="postResults();"/> Oranges
+        </label>
+        <br/>
+        <label>
+            <input class="fruit-radio" type="radio" value="pears" name="fruits" onchange="postResults();"/> Pears
+        </label>
+        <br/>
+
+        <h5 id="results"></h5>
+
+
+        <script>
+console.log("JavaScript running...");
+
+function postResults() {
+    // console.log("-- postResults()");
+    let resEl = document.getElementById("results");
+    // console.log(resEl);
+    let radioEls = document.getElementsByClassName("fruit-radio");
+    // console.log(radioEls);
+    let trueEl;
+    for (let el of radioEls) {
+        if (el.checked) {
+            trueEl = el;
+            break;
+        }
+    }
+    resEl.innerText = `Your favorite fruit is ${trueEl.value}!`;
+}
+
+
+        </script>
+    </body>
+</html>

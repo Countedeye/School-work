@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON</title>
+    </head>
+    <body>
+        <h1>JSON - JavaScript Object Notation</h1>
+
+        <label>
+            First Name:
+            <input id="first-input" type="text" value="Luke"/>
+        </label>
+        <br/>
+        <br/>
+
+        <label>
+            Last Name:
+            <input id="last-input" type="text" value="May"/>
+        </label>
+        <br/>
+        <br/>
+
+        <button autofocus onclick="convertToJson();">To JSON</button>
+        <br/>
+        <br/>
+
+
+
+        <textarea rows="16" cols="80" id="json-text">Hello<br/>Goodbye</textarea>
+        <br/>
+        <br/>
+
+        <button onclick="getJson();">Get JSON</button>
+
+        <script>
+console.log("JavavScript running...")
+
+
+function convertToJson() {
+
+    let firstEl = document.getElementById("first-input");
+    let lastEl = document.getElementById("last-input");
+
+    let obj = {
+        firstName: firstEl.value,
+        lastName: lastEl.value,
+    };
+
+    console.log(obj);
+
+    let taEl = document.getElementById("json-text");
+    console.log(taEl);
+    let json = JSON.stringify(obj, null, 4);
+    console.log(json);
+    taEl.value = json;
+}
+
+function getJson() {
+    console.log("getJSon() clicked!");
+    let taEl = document.getElementById("json-text");
+    console.log(taEl);
+    let s = taEl.value;
+    console.log(s);
+    let obj = JSON.parse(s);
+    console.log(obj);
+    let firstEl = document.getElementById("first-input");
+    let lastEl = document.getElementById("last-input");
+    firstEl.value = obj.firstName;
+    lastEl.value = obj.lastName;
+}
+
+        </script>
+    </body>
+</html>

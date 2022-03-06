@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Select Avatar</title>
+    </head>
+    <body>
+        <h1>Select Avatar</h1>
+
+        <select id="avatar-select" onchange="updateAvatar();">
+            <option style="display: none;" disabled selected value="">Select a frog...</option>
+            <option value="1">Normal</option>
+            <option value="2">Riiiight...</option>
+            <option value="3">Love</option>
+            <option value="4">Money</option>
+            <option value="5">Wow</option>
+            <option value="6">Smirk</option>
+        </select>
+        <br/>
+        <br/>
+
+        <img id="avatar-image" src="blank.png" width="125"/>
+
+
+        <script>
+console.log("Running JavaScript...");
+console.log("Frogs URL: https://cs.indstate.edu/~lmay1/assets/images/frogs/1.png")
+
+function updateAvatar() {
+    console.log("Update avatar!");
+    let selectEl = document.getElementById("avatar-select");
+    console.log(selectEl);
+    let data = selectEl.value;
+    console.log(data);
+    let url = `https://cs.indstate.edu/~lmay1/assets/images/frogs/${data}.png`;
+    console.log(url);
+    let imgEl = document.getElementById("avatar-image");
+    imgEl.src = url;
+}
+
+
+        </script>
+    </body>
+</html>

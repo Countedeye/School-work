@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inject Text</title>
+        <style>
+            body {
+                background-color: #333;
+                color: #bbb;
+            }
+            .inject-site {
+                color: #22cc55;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Inject Text</h1>
+        <hr/>
+
+        <label for="first-name-input">First Name:</label>
+        <input id="first-name-input" type="text" onkeypress="checkForEnter();" placeholder="Enter your name." />
+        <button onclick="updateName();">Update Name</button>
+        <br/>
+
+        <label>
+            Birth Month:
+            <input id="month-input" type="number" onchange="updateMonth();" min="1" max="12" placeholder="Birth month number."/>
+        </label>
+        <br/>
+
+
+        <br/>
+        <br/>
+        <br/>
+        Hello, my name is <span id="first-name-span" class="inject-site">UNKNOWN</span>, and my birth month is <span id="month-span" class="inject-site">UNKNOWN</span>.
+
+        <script>
+console.log("JavaScript running...");
+
+// let el = document.getElementById("first-name-span");
+// console.log(el);
+// el.style.color = "red";
+
+function updateName() {
+    // console.log("Clicked!");
+    let el = document.getElementById("first-name-input");
+    // console.log(el);
+    let text = el.value;
+    // console.log(text);
+    let elSpan = document.getElementById("first-name-span");
+    // console.log(elSpan);
+    elSpan.innerText = text;
+}
+
+function checkForEnter() {
+    // window.document.getElementById()
+    let ev = window.event;
+    // console.log(ev.keyCode);
+    if (ev.keyCode === 13) {
+        // console.log("Enter was pressed.");
+        updateName();
+    }
+}
+
+
+let monthNames = [
+    "January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December",
+];
+function updateMonth() {
+    let elInput = document.getElementById("month-input");
+    // console.log(elInput);
+    let numAsString = elInput.value;
+    // console.log(numAsString);
+    let num = parseInt(numAsString);
+    // console.log(num);
+    let elSpan = document.getElementById("month-span");
+    // console.log(elSpan);
+    elSpan.innerText = monthNames[num-1];
+
+}
+
+
+
+        </script>
+    </body>
+</html>
