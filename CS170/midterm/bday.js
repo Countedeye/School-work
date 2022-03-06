@@ -38,4 +38,5 @@ console.log("Failed Trials:".padEnd(19, " ") + result.failure.toString().padEnd(
 (result.failure/1000000*100).toFixed(2)+ "%");
 
 
-console.log("Total Trials:".padEnd(19, " ") + 1000000 + " 100%");
+console.log("Total Trials:".padEnd(19, " ") + 1000000 +
+"100%".padStart(7, " "));
