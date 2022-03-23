@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Pick a Card!</title>
+
+    <style>
+    body {
+        background-color: lightgrey;
+}
+.big {
+    font-size: 56px;
+}
+.center {
+    text-align: center;
+}
+#heading {
+    font-size: 70px;
+    text-align: center;
+}
+#stage {
+    text-align: center;
+}
+button {
+    font-size: 40px;
+    border-radius: 40px;
+}
+#card {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius:15px;
+}
+#controls {
+    text-align: center;
+    cursor: pointer;
+}
+.answer-section {
+    text-align: center;
+    font-size: 35px;
+}
+
+    </style>
+    <body>
+    <h1 id=heading>Pick a Card!</h1>
+    <div id=stage>
+        <img height=323; id=card onclick=pickCard() src="https://cs.indstate.edu/~lmay1/assets/cards/back.png" width=222>
+    </div>
+    <div id=controls>
+        <button id=clicker onclick="pickCard()">Pick a Card</button>
+    </div>
+    <div class=answer-section>
+        <h3>Answer to Question</h3>
+        <p>There are 52 different options for the computer to pick psuedorandomly.</p>
+
+        <script>
+    function pickRandomIndex(arr) {
+    return Math.floor(Math.random() * arr.length)
+}
+let deck = ["2_of_clubs", "2_of_diamonds", "2_of_hearts", "2_of_spades", "3_of_clubs", "3_of_diamonds", "3_of_hearts", "3_of_spades", "4_of_clubs", "4_of_diamonds", "4_of_hearts", "4_of_spades", "5_of_clubs", "5_of_diamonds", "5_of_hearts", "5_of_spades", "6_of_clubs", "6_of_diamonds", "6_of_hearts", "6_of_spades", "7_of_clubs", "7_of_diamonds", "7_of_hearts", "7_of_spades", "8_of_clubs", "8_of_diamonds", "8_of_hearts", "8_of_spades", "9_of_clubs", "9_of_diamonds", "9_of_hearts", "9_of_spades", "10_of_clubs", "10_of_diamonds", "10_of_hearts", "10_of_spades", "jack_of_clubs", "jack_of_diamonds", "jack_of_hearts", "jack_of_spades", "queen_of_clubs", "queen_of_diamonds", "queen_of_hearts", "queen_of_spades", "king_of_clubs", "king_of_diamonds", "king_of_hearts", "king_of_spades", "ace_of_clubs", "ace_of_diamonds", "ace_of_hearts", "ace_of_spades"];
+function pickCard() {
+    let r = pickRandomIndex(deck);
+    let imgPath = `https://cs.indstate.edu/~lmay1/assets/cards/${deck[r]}.png`;
+    let imgEl = document.getElementById("card");
+    imgEl.setAttribute("src", imgPath);
+}
+</script>
+</html>

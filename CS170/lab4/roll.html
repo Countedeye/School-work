@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Roll a Die!</title>
+    <style>
+
+body{
+    background-color: grey;
+}
+
+.big{
+    font-size: 56px;
+}
+.center {
+    text-align: center;
+}
+#stage {
+    text-align: center;
+}
+#controls {
+    font-size: 40px;
+    text-align: center;
+}
+#clicker {
+    cursor: pointer;
+}
+#die{
+    height: 400px;
+}
+button{
+    background-color: white;
+    font-size: 40px;
+}
+.answer-section{
+    text-align: center;
+}
+    </style>
+    </head>
+    <body>
+        <h1 class= "big center">Roll a Die!</h1>
+        <div id="stage">
+            <img id="die" onclick= "clickRoll()" src ="https://cs.indstate.edu/~lmay1/assets/dice/5.png"/>
+        </div>
+        <div id="controls">
+            <button id="clicker" onclick="clickRoll();">Roll the Die!</button>
+        <div class=answer-section>
+            <h3>Answer to Question:</h3>
+            <p> Computer programs are psuedorandom which causes the dice to stay the same on certain rolls.
+        </div>
+        <script>
+            function roll(){
+                let die= Math.floor(Math.random() * 6)+ 1;
+                return die;
+            }
+            function clickRoll() {
+                let num = roll();
+                let imgEl = document.getElementById("die");
+                let imageUrl = `https://cs.indstate.edu/~lmay1/assets/dice/${num}.png`;
+                imgEl.setAttribute("src",imageUrl);
+            }
+        </script>
+    </body>
+</html>
