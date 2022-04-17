@@ -2,7 +2,6 @@
 
 import sort_utils
 
-
 tests_passed = 0
 total_tests = 0
 
@@ -44,5 +43,3 @@ if tests_passed == total_tests:
     print("All lab tests PASSED!")
 else:
     print("Not all tests passed...")
-
-    

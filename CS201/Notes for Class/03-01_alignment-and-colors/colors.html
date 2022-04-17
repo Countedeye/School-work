@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Colors</title>
+        <style>
+body {
+    background-color: rgb(50, 230, 170);
+    text-align: center;
+}
+.page-heading {
+    font-size: 120px;
+    text-align: center;
+}
+        </style>
+    </head>
+    <body>
+        <h1 class="page-heading" id="heading">Colors</h1>
+        <label>
+            Red:
+            <input
+                id="red-input"
+                type="number"
+                min="0" max="255"
+                onchange="updateColor();"
+                value="0"
+            />
+        </label>
+        <label>
+            Green:
+            <input
+                id="green-input"
+                type="number"
+                min="0" max="255"
+                onchange="updateColor();"
+                value="0"
+            />
+        </label>
+        <label>
+            Blue:
+            <input
+                id="blue-input"
+                type="number"
+                min="0" max="255"
+                onchange="updateColor();"
+                value="0"
+            />
+        </label>
+        <script>
+console.log("JavaScript running...");
+
+function updateColor() {
+    // console.log("-- updateColor()");
+    let redEl = document.getElementById("red-input");
+    let greenEl = document.getElementById("green-input");
+    let blueEl = document.getElementById("blue-input");
+    // console.log(redEl, greenEl, blueEl);
+    let headingEl = document.getElementById("heading");
+    headingEl.style.color = `rgb(${redEl.value}, ${greenEl.value}, ${blueEl.value})`;
+    // console.log(headingEl.style);
+}
+        </script>
+    </body>
+</html>
