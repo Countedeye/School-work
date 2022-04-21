@@ -19,6 +19,10 @@ body {
     text-align: left;
     font-size: 30px;
 }
+#page-heading.name{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 .MainMenu{
     text-align: left;
     font-size: 30px;
