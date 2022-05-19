@@ -15,10 +15,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #666666;
+    background-color: #006400;
 
 }
 #page-heading {
+    background-color: #00008b;
     text-align: center;
     color: #dddddd;
 }
@@ -27,7 +28,7 @@ body {
     height: 500px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #dddddd;
+    background-color: #ffd700;
     border: 1px solid black;
     border-radius: 20px 20px 0 0;
     padding: 20px 50px 20px 50px;
@@ -38,18 +39,25 @@ body {
     width: 80%;
     height: 100px;
     margin: 0 auto;
-    background-color: #dddddd;
+    background-color: #00FFFF;
     border: 1px solid black;
     border-top: none;
     border-radius: 0 0 20px 20px;
 }
 #message-box{
+
     width: 85%;
     vertical-align: top;
 
 }
 #send-button{
+    border-color: black;
     vertical-align: top;
+}
+ .emoji {
+    text-align: center;
+    vertical-align: middle;
+
 }
 
         </style>
@@ -59,21 +67,112 @@ body {
         <div class="c-view">
         </div>
         <div class="c-controls">
-            <textarea id="message-box"></textarea>
-            <button id="send-button" type="button" onclick="sendMessage();">Send</button>
+            <textarea id="message-box" onkeypress="detectEnter();"></textarea>
+            <button id="send-button" type="button" onclick="sendMessage();">Send</button><br/>
+            <span style="font-weight: bold;">Emojis:</span></br>
+            <span style="border: 1px solid black;">:dog:</span>
+            <img class="emoji" src="https://place-puppy.com/15x15"/>
+            <span style="border: 1px solid black;">:cat:</span>
+            <img class="emoji" src="http://placekitten.com/15/15"/>
         </div>
         <script>
-    console.log("Javascript Running");
+console.log("Javascript Running");
 
-    function sendMessage() {
+function sendMessage() {
         const chatViewEl = document.getElementsByClassName("c-view")[0];
         const messageBoxEl = document.getElementById("message-box");
 
-        let newMessage = messageBoxEl.value;
+        let newMessage = messageBoxEl.value + "\n";
+        newMessage = cleanUpMessage(newMessage);
+        newMessage = addEmojis(newMessage);
+        newMessage = addPreprocessors(newMessage);
+
+
+        messageBoxEl.value = "";
+        messageBoxEl.focus();
+
         let chats = chatViewEl.innerHTML
         chats += newMessage;
         chatViewEl.innerHTML = chats;
+        chatViewEl.scrollTop = chatViewEl.scrollHeight;
+
     }
+function cleanUpMessage(msg) {
+        let foundIndex;
+
+        foundIndex = msg.indexOf("&");
+        while (foundIndex != -1) {
+            msg = msg.replace("&", "&amp;");
+            foundIndex = msg.indexOf("&", foundIndex + 5);
+        }
+        foundIndex = msg.indexOf("<");
+        while (foundIndex != -1) {
+            msg = msg.replace("<", "&lt;");
+            foundIndex = msg.indexOf("<", foundIndex + 4);
+        }
+        foundIndex = msg.indexOf("\n");
+        while (foundIndex != -1) {
+            msg = msg.replace("\n", "<br/>");
+            foundIndex = msg.indexOf("\n", foundIndex + 5);
+        }
+        return msg;
+}
+const emojisAsText = [
+    ":dog:",
+    ":cat:",
+];
+const emojisAsHtml = [
+    '<img src="http://place-puppy.com/15x15"/>',
+    '<img src="http://placekitten.com/15/15"/>',
+];
+const ppAsText = [
+    "/roll",
+];
+const ppAsHtml = [
+    function() {
+        const rollValue = Math.floor(Math.random() * 6) + 1;
+        return `You rolled a ${rollValue}!`;
+    }
+];
+function addEmojis(msg) {
+    let foundIndex;
+
+    for(let i=0; i<emojisAsHtml.length; i++){
+
+        const searchingFor = emojisAsText[i];
+        const replacingWith = emojisAsHtml[i];
+
+        foundIndex = msg.indexOf(searchingFor);
+        while (foundIndex != -1) {
+            msg = msg.replace(searchingFor, replacingWith);
+            foundIndex = msg.indexOf(searchingFor, foundIndex + replacingWith.length);
+        }
+    }
+    return msg;
+}
+function addPreprocessors(msg) {
+    let foundIndex;
+
+    for(let i=0; i<ppAsHtml.length; i++){
+
+        const searchingFor = ppAsText[i];
+        const replacingWith = ppAsHtml[i];
+
+        foundIndex = msg.indexOf(searchingFor);
+        while (foundIndex != -1) {
+            msg = msg.replace(searchingFor, replacingWith);
+            foundIndex = msg.indexOf(searchingFor, foundIndex + replacingWith.length);
+            }
+        }
+    return msg;
+}
+function detectEnter() {
+    const ev = window.event;
+    if (ev.keyCode == 13 && !ev.shiftKey) {
+        ev.preventDefault();
+        sendMessage();
+    }
+}
         </script>
     </body>
 </html>
